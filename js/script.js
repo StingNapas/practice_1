@@ -10,10 +10,24 @@ let personalMovieDB = {
 	privat: false,
 };
 
-let q1 = prompt("Один из последних просмотренных фильмов?", ""),
-		q2 = prompt("На сколько оцените его?", ""),
-		q3 = prompt("Один из последних просмотренных фильмов?", ""),
-		q4 = prompt("На сколько оцените его?", "");
+for (let i = 0; i < 2; i++){
+	let q1 = prompt("Один из последних просмотренных фильмов?", ""),
+			q2 = prompt("На сколько оцените его?", "");
 
-personalMovieDB.movies[q1] = q2;
-personalMovieDB.movies[q3] = q4;
+	if (typeof(q1) != null && typeof(q2) != null && q1 != '' && q2 != ''
+			&& q1.length <= 50 ){
+		personalMovieDB.movies[q1] = q2;
+	} else {
+		i--;
+	}
+}
+
+if (personalMovieDB.count < 10){
+	console.log("Просмотрено довольно мало фильмов");
+} else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30){
+	console.log("Вы классический зритель");
+} else if(personalMovieDB.count >= 30){
+	console.log("Вы киноман");
+} else{
+	console.log("Произошла ошибка");
+}
